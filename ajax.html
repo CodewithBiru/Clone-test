@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ajax practice</title>
+</head>
+<body>
+    <p id="demo">Trying to fetch data via "ajax"</p>
+    <button onclick="FetchData()">Click</button>
+    <script>
+        function FetchData(){
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                   document.getElementById("demo").innerHTML=this.responseText;
+                }else if(this.readyState == 4 && this.status == 404){
+                    document.getElementById("demo").innerHTML="Error:File not found"; 
+                }
+            }
+            xhttp.open('GET',"sample.txt",true);
+            xhttp.send();
+        }
+    </script>
+
+</body>
+</html>
